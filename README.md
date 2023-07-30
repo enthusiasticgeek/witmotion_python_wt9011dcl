@@ -2,7 +2,9 @@
 
 WitMotion WT9011DCL GUI /CLI Python code
 
-Note: Currently the method to obtain parameters is using python's PySerial Library. We will explore BLE 5 option in the future.
+## Note: 
+
+Currently the method to obtain parameters is using python's PySerial Library. We will explore BLE 5 option in the future.
 
 ## Dependencies (Tested On Ubuntu)
 
