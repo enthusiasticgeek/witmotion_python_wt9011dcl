@@ -36,11 +36,19 @@ Connect the WT9011DCL IMU via USB C to USB A cable to Ubuntu/Linux PC.
 
 #### CLI Method:
 
+        cd src; 
         sudo ./witmotion_wt9011dcl.py
 
 #### GUI Method:
 
+        cd src; 
         sudo ./witmotion_wt9011dcl_gui.py
+
+
+#### GUI 3D (OpenGL) Method:
+
+        cd src; 
+        sudo ./witmotion_wt9011dcl_gui_3d.py
 
 ![alt text]( https://github.com/enthusiasticgeek/witmotion_python_wt9011dcl/blob/main/wt9011dcl.png "example output")
 
