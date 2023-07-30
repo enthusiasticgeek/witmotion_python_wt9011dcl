@@ -21,6 +21,6 @@ https://github.com/WITMOTION/WitBluetooth_BWT901BLE5_0
 
 https://drive.google.com/drive/folders/1I6sBC-8Q3_vtY-GrFDZbWJZJFk7UnNfO
 
-## Communication Protocol:
+## Communications Protocol:
 
 https://drive.google.com/drive/folders/1cZ8Wjn0KKyztG4NRaTN-y4XcqHpFKz6m
