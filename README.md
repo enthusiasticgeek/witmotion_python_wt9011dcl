@@ -2,6 +2,8 @@
 
 WitMotion WT9011DCL GUI /CLI Python code
 
+Note: Currently the method to obtain parameters is using python's PySerial Library. We will explore BLE 5 option in the future.
+
 ## Dependencies (Tested On Ubuntu)
 
 Install Python 3.8+ and pip3 installed (Most Linux distributions come with this preinstalled)
@@ -11,6 +13,7 @@ Install Python 3.8+ and pip3 installed (Most Linux distributions come with this 
     sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-3.0 -y
     sudo apt install python3-opengl -y
     sudo apt-get install python3-dev python3-pip libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libgl1-mesa-dev libgles2-mesa-dev -y
+    sudo -H pip3 install pyserial
     sudo -H pip3 install pygame PyOpenGL PyOpenGL-accelerate
 
 ## Hardware Information/ Datasheets
