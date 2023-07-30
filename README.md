@@ -36,3 +36,5 @@ sudo ./witmotion_wt9011dcl.py
 #### GUI Method:
 
 sudo ./witmotion_wt9011dcl_gui.py
+
+![alt text]( https://github.com/enthusiasticgeek/witmotion_python_wt9011dcl/blob/main/wt9011dcl.png "example output")
