@@ -44,4 +44,4 @@ Connect the WT9011DCL IMU via USB C to USB A cable to Ubuntu/Linux PC.
 
 ## Note:
 
-Initially the WT9011DCL did not spit out the data. However, I sent the hex string to factory reset. I also attached the accompanying BLE adapter dongle and ran a Bluetooth devices scan. Also, I added the user to dialout group on Ubuntu. I am not sure which of these events got the device to spit out data after disconnecting and reconnecting to the USB port. My guess is the one of latter two.
+Initially the WT9011DCL did not spit out the data. However, I sent the hex string to factory reset the device. I also attached the accompanying BLE adapter dongle and ran a Bluetooth devices scan. Also, I added the user to dialout group on Ubuntu. I am not sure which of these events got the device to spit out data after disconnecting and reconnecting to the USB port. My guess is the one of latter two.
