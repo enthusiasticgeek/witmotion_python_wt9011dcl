@@ -24,3 +24,15 @@ https://drive.google.com/drive/folders/1I6sBC-8Q3_vtY-GrFDZbWJZJFk7UnNfO
 ## Communications Protocol:
 
 https://drive.google.com/drive/folders/1cZ8Wjn0KKyztG4NRaTN-y4XcqHpFKz6m
+
+## Usage:
+
+Connect the WT9011DCL IMU via USB C to USB A cable to Ubuntu/Linux PC. 
+
+#### CLI Method:
+
+sudo ./witmotion_wt9011dcl.py
+
+#### GUI Method:
+
+sudo ./witmotion_wt9011dcl_gui.py
