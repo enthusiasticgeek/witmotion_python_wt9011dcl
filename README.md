@@ -61,3 +61,7 @@ Initially the WT9011DCL did not spit out the data. However, I sent the hex strin
 And
 
          sudo usermod -aG dialout ${USER}
+
+https://github.com/enthusiasticgeek/witmotion_python_wt9011dcl/assets/4500752/126575a5-4817-4e96-b9d3-13cef0ecf1b2
+
+
