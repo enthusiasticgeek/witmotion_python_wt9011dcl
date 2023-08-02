@@ -1,6 +1,10 @@
 # witmotion_python_wt9011dcl
 
-WitMotion WT9011DCL GUI /CLI Python code
+WitMotion WT9011DCL GUI (3D Cube) /CLI Python code
+
+## Update:
+
+WitMotion WT901CTTL GUI (3D Cube) /CLI Python code now available!
 
 ## Note: 
 
