@@ -18,7 +18,7 @@ def read_data_packet(start_byte=b'\x51'):
 
     # Check for the next byte to be start_byte
     if ser.read(1) == start_byte:
-        # Read 18 more bytes after 0x55 and start_byte
+        # Read 9 more bytes after 0x55 and start_byte
         data_packet = start_bytes + start_byte + ser.read(9)
         return data_packet
     else:
