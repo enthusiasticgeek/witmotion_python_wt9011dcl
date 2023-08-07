@@ -39,6 +39,143 @@ def read_data_packet(start_byte=b'\x51', timeout=1):
     data_packet = start_bytes + start_byte + ser.read(9)
     return data_packet
 
+# Assuming you have initialized the serial port as 'ser'
+# ser = serial.Serial(...)
+
+def send_data_over_serial(data_to_send):
+    # Step 1: Unlock 0xFF 0XAA 0X69 0X88 0XB5
+    unlock_data = b'\xFF\xAA\x69\x88\xB5'
+    ser.write(unlock_data)
+
+    # Step 2: Send the command to be modified
+    ser.write(data_to_send)
+
+    # Step 3: Save 0xFF 0XAA 0X00 0X00 0X00
+    save_data = b'\xFF\xAA\x00\x00\x00'
+    ser.write(save_data)
+
+
+def save_rsw(data=b'\x3E'):
+    print('setting RSW')
+    # Step 1: Unlock 0xFF 0XAA 0X69 0X88 0XB5
+    unlock_data = b'\xFF\xAA\x69\x88\xB5'
+    ser.write(unlock_data)
+
+    time.sleep(1)
+
+    # Step 2: Send the command to be modified
+    data_to_send = b'\xFF\xAA\x02' + data + b'\x00'
+    ser.write(data_to_send)
+
+    time.sleep(1)
+
+    # Step 3: Save 0xFF 0XAA 0X00 0X00 0X00
+    save_data = b'\xFF\xAA\x00\x00\x00'
+    ser.write(save_data)
+
+    time.sleep(1)
+
+
+
+def save_rrate(data=b'\x03'):
+    print('setting RRATE')
+    # Step 1: Unlock 0xFF 0XAA 0X69 0X88 0XB5
+    unlock_data = b'\xFF\xAA\x69\x88\xB5'
+    ser.write(unlock_data)
+
+    time.sleep(1)
+
+    # Step 2: Send the command to be modified
+    data_to_send = b'\xFF\xAA\x03'+ data + b'\x00'
+    ser.write(data_to_send)
+
+    time.sleep(1)
+
+    # Step 3: Save 0xFF 0XAA 0X00 0X00 0X00
+    save_data = b'\xFF\xAA\x00\x00\x00'
+    ser.write(save_data)
+
+    time.sleep(1)
+
+
+def save_calsw(data=b'\x00'):
+    print('setting CALSW')
+    # Step 1: Unlock 0xFF 0XAA 0X69 0X88 0XB5
+    unlock_data = b'\xFF\xAA\x69\x88\xB5'
+    ser.write(unlock_data)
+
+    time.sleep(1)
+
+    # Step 2: Send the command to be modified
+    data_to_send = b'\xFF\xAA\x01'+ data + b'\x00'
+    ser.write(data_to_send)
+
+    time.sleep(1)
+
+    # Step 3: Save 0xFF 0XAA 0X00 0X00 0X00
+    save_data = b'\xFF\xAA\x00\x00\x00'
+    ser.write(save_data)
+
+    time.sleep(1)
+
+
+def save_rsw_data(time_on, acc_on, gyro_on, angle_on, mag_on, port_on, press_on, gps_on, quat_on, gsa_on):
+    # Create an 16-bit integer to hold the data
+    data = 0
+
+    # Set each bit according to the respective flags
+    data |= (1 if time_on else 0) << 0
+    data |= (1 if acc_on else 0) << 1
+    data |= (1 if gyro_on else 0) << 2
+    data |= (1 if angle_on else 0) << 3
+    data |= (1 if mag_on else 0) << 4
+    data |= (1 if port_on else 0) << 5
+    data |= (1 if press_on else 0) << 6
+    data |= (1 if gps_on else 0) << 7
+    data |= (1 if quat_on else 0) << 8
+    data |= (1 if gsa_on else 0) << 9
+    data |= (0) << 10
+    data |= (0) << 11
+    data |= (0) << 12
+    data |= (0) << 13
+    data |= (0) << 14
+    data |= (0) << 15
+
+    # Convert the 8-bit integer to a bytes object (Short)
+    data_byte = data.to_bytes(1, byteorder='big')
+
+    return data_byte
+
+
+#Set calibration mode:
+#0000(0x00): Normal working mode
+#0001(0x01): Automatic accelerometer calibration
+#0011(0x03): Height reset
+#0100(0x04): Set the heading angle to zero
+#0111(0x07): Magnetic Field Calibration (Spherical Fitting)
+#1000 (0x08): Set the angle reference
+#1001(0x09): Magnetic Field Calibration (Dual Plane Mode)
+
+calsw_normal_mode = b'\x00'
+calsw_auto_acc_calib_mode = b'\x01'
+calsw_height_reset_mode = b'\x03'
+calsw_set_heading_angle_zero_mode = b'\x04'
+calsw_mag_spherical_calib_mode = b'\x07'
+calsw_set_angle_ref_calib_mode = b'\x08'
+calsw_mag_dual_plane_calib_mode = b'\x09'
+
+# Example usage
+data_to_send = save_rsw_data(time_on=0, acc_on=1, gyro_on=1, angle_on=1, mag_on=1, port_on=1, press_on=0, gps_on=0, quat_on=0, gsa_on=0)
+print("Data to Send:", data_to_send.hex().upper())
+#send_data_over_serial(data_to_send)
+save_rsw(data_to_send)
+save_rrate()
+save_calsw(calsw_mag_spherical_calib_mode)
+print("sleeping 10 secs for magnetic calibration")
+time.sleep(10)
+save_calsw(calsw_normal_mode)
+#sys.exit()
+
 def parse_data_packet_time(data_packet):
     # Unpack the data_packet based on the format described in the datasheet
     YY, MM, DD, HH, MN, SS, MSL, MSH, Sum = data_packet[2:11]
@@ -199,17 +336,13 @@ def parse_data_packet_gps_position_accuracy_output(data_packet):
 def parse_data_packet_register_value_output(data_packet):
     # Unpack the data_packet based on the format described in the datasheet
     R1L, R1H, R2L, R2H, R3L, R3H, R4L, R4H, Sum = data_packet[2:11]
-
     R1 = ((R1H << 8) | R1L)
     R2 = ((R2H << 8) | R2L)
     R3 = ((R3H << 8) | R3L)
     R4 = ((R4H << 8) | R4L)
-
     # Checksum
     sum_rv = Sum
-
     return R1, R2, R3, R4, sum_rv
-
 
 parser = argparse.ArgumentParser(description="Enable/Disable Functions Using Flags.")
 parser.add_argument("-t", "--enable_time", action="store_true", help="Enable Time")
@@ -229,7 +362,6 @@ args = parser.parse_args()
 if not any(vars(args).values()):
    parser.print_help()
    sys.exit()
-
 
 
 try:
@@ -364,4 +496,3 @@ except KeyboardInterrupt:
 except Exception as e:
     print("Error:", e)
     ser.close()
-
