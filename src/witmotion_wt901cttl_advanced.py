@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Author: Pratik M Tambe <enthusiasticgeek@gmail.com>
-# Date: Aug 2, 2023
+# Date: Aug 6, 2023
 # Wit Motion WT9011DCL-BT5
 # Advanced capabilities
 # Usage: sudo ./witmotion_wt901cttl.py --enable_acceleration --enable_angular_output --enable_<parameter1> --enable_<parameter2> ....
