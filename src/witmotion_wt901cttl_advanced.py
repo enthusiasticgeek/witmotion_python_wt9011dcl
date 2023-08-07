@@ -141,7 +141,7 @@ def save_rsw_data(time_on, acc_on, gyro_on, angle_on, mag_on, port_on, press_on,
     data |= (0) << 14
     data |= (0) << 15
 
-    # Convert the 8-bit integer to a bytes object (Short)
+    # Convert the 8-bit integer to a bytes object
     data_byte = data.to_bytes(1, byteorder='big')
 
     return data_byte
