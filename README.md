@@ -73,3 +73,11 @@ The following may need to be run as well on some Linux systems.
 https://github.com/enthusiasticgeek/witmotion_python_wt9011dcl/assets/4500752/126575a5-4817-4e96-b9d3-13cef0ecf1b2
 
 
+## TODO: Future Improvements
+
+Magnetic Calibration functions.
+Better plots.
+
+requirements.txt file.
+
+       pip install -r requirements.txt
