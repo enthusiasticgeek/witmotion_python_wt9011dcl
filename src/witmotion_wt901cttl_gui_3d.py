@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Pratik M Tambe <enthusiasticgeek@gmail.com>
 # Date: July 29, 2023
-# Wit Motion WT9011DCL-BT5
+# Wit Motion WT901CTTL
 # Basic capabilities with GUI
 
 
