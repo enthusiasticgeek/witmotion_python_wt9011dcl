@@ -64,7 +64,11 @@ Initially the WT9011DCL did not spit out the data. However, I sent the hex strin
 
 And
 
-         sudo usermod -aG dialout ${USER}
+        sudo usermod -aG dialout ${USER}
+
+Perhaps, the following may need to be run as well on some Linux systems.
+
+        sudo chmod a+rw /dev/ttyUSB0
 
 https://github.com/enthusiasticgeek/witmotion_python_wt9011dcl/assets/4500752/126575a5-4817-4e96-b9d3-13cef0ecf1b2
 
