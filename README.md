@@ -66,7 +66,7 @@ And
 
         sudo usermod -aG dialout ${USER}
 
-Perhaps, the following may need to be run as well on some Linux systems.
+The following may need to be run as well on some Linux systems.
 
         sudo chmod a+rw /dev/ttyUSB0
 
